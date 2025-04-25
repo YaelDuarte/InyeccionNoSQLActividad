@@ -13,4 +13,11 @@ Esta actividad es una aplicación web **vulnerable a inyecciones NoSQL**.
 
 ---
 
+## 🚀 Para la ejecución:
+
+### 1. Clona el repositorio
+```bash
+git clone https://github.com/YaelDuarte/InyeccionNoSQLActividad
+cd InyeccionNoSQLActividad
+
 
