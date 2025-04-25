@@ -9,7 +9,7 @@ Esta actividad es una aplicación web **vulnerable a inyecciones NoSQL**.
 - Node.js
 - Express
 - MongoDB (MongoDB Atlas)
-- HTML / CSS básico
+- HTML / CSS 
 
 ---
 
@@ -26,7 +26,7 @@ cd InyeccionNoSQLActividad
 npm install
 ```
 
-### 3. Ejecutar el sript para poder insertar usuarios de prueba a la BD, gracias a la clase seed.js
+### 3. Ejecutar el script para poder insertar usuarios de prueba a la BD, gracias a la clase seed.js
 ```bash
 node seed.js
 ```
