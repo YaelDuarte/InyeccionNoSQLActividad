@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Vulnerable NoSQL</title>
+
+  <!-- AQUI INICIA EL DISEÑO DEL CONTENEDOR Y EL FONDO DEL LOGIN -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #7d02c479;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 30px 40px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #444;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff9100;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+    <!-- Dentro de este container tenemos los inputs para la contraseña y usuario -->
+  <div class="container">
+    <h2>Login Vulnerable</h2>
+    <form method="POST" action="/login" id="loginForm">
+      <input name="username" placeholder="Usuario" required /><br />
+      <input name="password" placeholder="Contraseña" required /><br />
+      <button type="submit">Iniciar sesión</button>
+    </form>
+  </div>
+
+  <!-- Script para verificar los datos ingresados y mandarlos en normal o en un JSON -->
+  <script>
+    const form = document.getElementById('loginForm');
+
+    form.addEventListener('submit', function (e) {
+      const username = form.username.value.trim();
+      const password = form.password.value;
+
+      // Detecta si el campo parece un JSON válido
+      try {
+        const parsedUsername = JSON.parse(username);
+
+        // Si es un JSON válido, detiene el form y manda como JSON real
+        e.preventDefault();
+        fetch(form.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: parsedUsername,
+            password: password
+          })
+        })
+          .then(res => res.text())
+          .then(alert);
+      } catch (err) {
+        // Si no es JSON, se manda normalmente como formulario
+        // No se hace nada: se deja que el navegador lo envíe
+      }
+    });
+  </script>
+</body>
+</html>
+
